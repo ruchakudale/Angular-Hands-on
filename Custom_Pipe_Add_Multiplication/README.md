@@ -1,4 +1,4 @@
-# Ass92
+# Custom Pipes to add and multiply numbers
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
 
