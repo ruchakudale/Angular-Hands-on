@@ -1,0 +1,153 @@
+<form [formGroup]="CustomerInfo">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6 col-sm-6 col-xs-6 m-md-4 m-sm-2 text-center">
+            <h1 class="purplecolor">Contact Our</h1>
+            <h1>Customer Support Center</h1>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 m-md-3 m-sm-2 text-center">
+            <img src="/assets/LaptopImage.jpg" class="img-fluid rounded float-right" alt="Responsive image">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row text-center">
+        <h3>Contact Information</h3>
+        <h6>Please fill out your contact information below:</h6>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <label>Name* </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <small>First Name</small>
+            <input [class.is-invalid]="CustomerInfo.get('firstname')?.invalid && CustomerInfo.get('firstname')?.touched"
+                type="text" class="form-control" formControlName="firstname">
+
+            <small class="text-danger" *ngIf="CustomerInfo.get('firstname')?.touched">
+                <p *ngIf="CustomerInfo.get('firstname')?.errors?.['required']">First name is required</p>
+                <p *ngIf="CustomerInfo.get('firstname')?.errors?.['pattern']">Please enter a valid first name</p>
+            </small>
+
+        </div>
+        <div class="col-md-4">
+            <small>Last Name</small>
+            <input [class.is-invalid]="CustomerInfo.get('lastname')?.invalid && CustomerInfo.get('lastname')?.touched"
+                type="text" class="form-control" formControlName="lastname">
+
+            <small class="text-danger" *ngIf="CustomerInfo.get('lastname')?.touched">
+                <p *ngIf="CustomerInfo.get('lastname')?.errors?.['required']">Last name is required</p>
+                <p *ngIf="CustomerInfo.get('lastname')?.errors?.['pattern']">Please enter a valid last name</p>
+            </small>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 my-md-2"> <!--   my for margin top and bottom -->
+            <label>Email* </label>
+            <input [class.is-invalid]="CustomerInfo.get('email')?.invalid && CustomerInfo.get('email')?.touched"
+                type="email" class="form-control" name="email" formControlName="email">
+
+            <small class="text-danger" *ngIf="CustomerInfo.get('email')?.touched">
+                <p *ngIf="CustomerInfo.get('email')?.errors?.['required']">Email is required</p>
+                <p *ngIf="CustomerInfo.get('email')?.errors?.['pattern']">Please enter a valid email</p>
+            </small>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 my-md-1">
+            <label>Phone* </label>
+            <input [class.is-invalid]="CustomerInfo.get('phone')?.invalid && CustomerInfo.get('phone')?.touched"
+                type="number" class="form-control" formControlName="phone">
+
+            <small class="text-danger" *ngIf="CustomerInfo.get('phone')?.touched">
+                <p *ngIf="CustomerInfo.get('phone')?.errors?.['required']">Phone number is required</p>
+                <p *ngIf="CustomerInfo.get('phone')?.errors?.['pattern']">Please enter a valid 10 digit phone number</p>
+            </small>
+        </div>
+    </div>
+
+    <div class="row" formGroupName="addressGroup">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 my-md-3">
+
+            <label>Address* </label>
+            <input
+                [class.is-invalid]="CustomerInfo.get('addressGroup')?.get('address')?.invalid && CustomerInfo.get('addressGroup')?.get('address')?.touched"
+                type="text" class="form-control my-md-1" formControlName="address">
+
+            <small class="text-danger" *ngIf="CustomerInfo.get('addressGroup')?.get('address')?.touched">
+                <p *ngIf="CustomerInfo.get('addressGroup')?.get('address')?.errors?.['required']">Address is required
+                </p>
+            </small>
+
+
+            <label>City* </label>
+            <input
+                [class.is-invalid]="CustomerInfo.get('addressGroup')?.get('city')?.invalid && CustomerInfo.get('addressGroup')?.get('city')?.touched"
+                type="text" class="form-control my-md-1" formControlName="city">
+
+            <small class="text-danger" *ngIf="CustomerInfo.get('addressGroup')?.get('city')?.touched">
+                <p *ngIf="CustomerInfo.get('addressGroup')?.get('city')?.errors?.['required']">City is required</p>
+                <p *ngIf="CustomerInfo.get('addressGroup')?.get('city')?.errors?.['minlength']">Please enter a valid
+                    city name</p>
+            </small>          
+
+            <label>State* </label>
+            <div class="input-group mb-md-1">
+                <select
+                    [class.is-invalid]="CustomerInfo.get('addressGroup')?.get('state')?.invalid && CustomerInfo.get('addressGroup')?.get('state')?.touched"
+                    class="custom-select" id="state" class="form-control my-md-1" formControlName="state">
+                    <option value="1">Maharashtra</option>
+                    <option value="2">Gujarat</option>
+                    <option value="3">Uttar Pradesh</option>
+                </select>
+            </div>
+
+            <small class="text-danger" *ngIf="CustomerInfo.get('addressGroup')?.get('state')?.touched">
+                <p *ngIf="CustomerInfo.get('addressGroup')?.get('state')?.errors?.['required']">State is required</p>
+            </small>
+
+            <label>ZipCode* </label>
+            <input
+                [class.is-invalid]="CustomerInfo.get('addressGroup')?.get('zipcode')?.invalid && CustomerInfo.get('addressGroup')?.get('zipcode')?.touched"
+                type="number" class="form-control my-md-1" formControlName="zipcode">
+            <small class="text-danger" *ngIf="CustomerInfo.get('addressGroup')?.get('zipcode')?.touched">
+                <p *ngIf="CustomerInfo.get('addressGroup')?.get('zipcode')?.errors?.['required']">ZipCode is required
+                </p>
+                <p *ngIf="CustomerInfo.get('addressGroup')?.get('zipcode')?.errors?.['pattern']">Please enter a valid 6
+                    digit zipcode</p>
+            </small>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 my-md-1">
+            <label>Comments </label>
+            <textarea
+                [class.is-invalid]="CustomerInfo.get('comments')?.invalid && CustomerInfo.get('comments')?.touched"
+                type="text" class="form-control my-md-1" rows="5" formControlName="comments"></textarea>
+            <small class="text-danger" *ngIf="CustomerInfo.get('comments')?.touched">
+                <p *ngIf="CustomerInfo.get('comments')?.errors?.['minlength']">Minimum characters allowed are 30</p>
+            </small>
+        </div>
+    </div>
+    <div class="row  ">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+            <button type="button" class="btn purplebutton btn-lg" [disabled]="CustomerInfo.invalid">Submit Form</button>
+        </div>
+    </div>
+</form>
+
+<router-outlet></router-outlet>
